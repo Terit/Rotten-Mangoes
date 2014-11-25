@@ -8,8 +8,9 @@ class Movie < ActiveRecord::Base
 
   def review_average
     if reviews.size > 0
-      reviews.sum(:rating_out_of_ten)/reviews.size
+      return reviews.sum(:rating_out_of_ten)/reviews.size * 1.0
     end
+    0.0
   end
 
   protected
