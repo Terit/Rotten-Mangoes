@@ -26,16 +26,15 @@
     <%= f.number_field "runtime_in_minutes" %>
   </div>
   <div>
-    <%= f.label "poster_image_url" %><br>
-    <%= f.text_field "poster_image_url" %>
+    <%= f.label 'poster upload' %><br>
+    <%= f.text_field :remote_poster_url %>
+    <%= f.label "or upload your own: " %><%= f.file_field :poster %>
   </div>
   <div>
     <%= f.label "description" %><br>
     <%= f.text_area "description" %>
   </div>
   <div>
-    <%= f.label 'poster upload' %><br>
-    <%= f.file_field :poster %>
   </div>
   <div>
     <%= f.submit "Submit" %> 
