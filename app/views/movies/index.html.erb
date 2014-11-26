@@ -1,11 +1,18 @@
-
 <% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.poster.thumb.url()), movie_path(movie), class: 'th' %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3>Rating: <%= movie.review_average %>/10</h3>
-  <h3><%= formatted_date(movie.release_date) %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p>
-  <hr>
+  <div class='row'>
+    <div class='small-3 columns'>
+      <%= link_to image_tag(movie.poster.thumb.url()), movie_path(movie), class: 'th' %>
+     </div>
+     <div class='small-7 columns'> 
+      <h4><%= link_to movie.title, movie_path(movie) %></h4>
+      <h6>Release date: <%= formatted_date(movie.release_date) %></h6>
+      <h6>Directed by: <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h6>
+      <p><%= movie.description %></p>
+     </div> 
+     <div class='small-1 small-offset-1 columns'>
+      <h6><%= movie.review_average %></h6>
+      </div>
+  </div>
+  <!-- <hr> -->
 <% end %>
-<%= link_to "Submit a movie!", new_movie_path %>
+

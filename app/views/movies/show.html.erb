@@ -1,22 +1,27 @@
-
-<%= link_to image_tag(@movie.poster.thumb.url()), movie_path(@movie), class: 'th' %>
-<h2><%= @movie.title %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)</h2>
-<h3><%= @movie.release_date %></h3>
-<h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
-<p><%= @movie.description %></p>
-
-<hr>
-
-<h3>Reviews of <em><%= @movie.title %></em></h3>
-<% if current_user %>
-  <% @movie.reviews.each do |review| %>
-    <p><%= review.text %></p>
-    <p><%= review.rating_out_of_ten %>/10</p>
-    <small>- <%= review.user.full_name %></small><br/>
-  <% end %>
-  <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
-<% else %>
-  <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own.</p> 
-<% end %>
-
-<%= link_to "Back to all movies", movies_path %><br/>
+<div class='row'>
+  <div class='small-3 column'>
+    <%= link_to image_tag(@movie.poster.thumb.url()), movie_path(@movie), class: 'th' %>
+  </div>
+  <div class='small-9 column'>
+    <h2><%= @movie.title %></h2>
+    <p><%= formatted_date(@movie.release_date) %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)</p>
+    <h5>Director: <%= @movie.director %></h5>
+    <h5>Runtime: <%= @movie.runtime_in_minutes %> minutes</h5>
+    <p><%= @movie.description %></p>
+  </div>
+</div>
+<div class='row'>
+  <div class='small-12 column'>
+    <h3>Reviews of <em><%= @movie.title %></em></h3>
+    <% if current_user %>
+      <% @movie.reviews.each do |review| %>
+        <p><%= review.text %></p>
+        <p><%= review.rating_out_of_ten %>/10</p>
+        <small>- <%= review.user.full_name %></small><br/>
+      <% end %>
+      <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
+    <% else %>
+      <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own.</p> 
+    <% end %>
+  </div>
+</div>

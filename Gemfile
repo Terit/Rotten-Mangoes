@@ -41,4 +41,5 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'foundation-rails'
 gem 'rmagick'
 gem 'carrierwave'
-
+gem 'factory_girl_rails'
+gem 'faker'

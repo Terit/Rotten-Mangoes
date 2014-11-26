@@ -23,11 +23,12 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
+          <li class='active'><%= link_to "Submit a movie!", new_movie_path %></li>
           <li class="has-dropdown">
             <a href="#">Menu</a>
             <ul class="dropdown">
               <li><%= link_to "Movies", movies_path %></li>
-              <li class="active"><a href="#">Active link in dropdown</a></li>
+              <!-- <li class="active"><a href="#">Active link in dropdown</a></li> -->
             </ul>
           </li>
         </ul>
@@ -48,15 +49,9 @@
       </section>
     </nav>  
     <div class='container'>
-      <div class='row'>
-        <div class='large-2 columns'>
-        </div>
-        <div class='large-8 columns'>
         <%= yield %>
-        </div>
-        <div class='large-2 columns'></div>
-      </div>
+
+    <%= javascript_include_tag "application" %>    
     </div>
-        <%= javascript_include_tag "application" %>    
   </body>
 </html>
