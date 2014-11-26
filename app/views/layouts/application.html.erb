@@ -23,14 +23,24 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-          <li class='active'><%= link_to "Submit a movie!", new_movie_path %></li>
-          <li class="has-dropdown">
+          <% if current_user %>
+            <li class='has-dropdown'>
+              <a><%= current_user.full_name %></a>
+              <ul class='dropdown'>
+                <li><%= link_to "Submit a movie!", new_movie_path %></li>
+                <li><%= link_to "Log Out", session_path("current"), method: :delete %></li>
+              </ul>
+            </li>
+            <% else %>
+            <li class='active'><%= link_to "Sign Up", new_user_path %></li>
+            <li><%= link_to "Log In", new_session_path %></li>
+            <% end %>
+<!--           <li class="has-dropdown">
             <a href="#">Menu</a>
             <ul class="dropdown">
               <li><%= link_to "Movies", movies_path %></li>
-              <!-- <li class="active"><a href="#">Active link in dropdown</a></li> -->
             </ul>
-          </li>
+          </li> -->
         </ul>
 
         <!-- Left Nav Section -->
