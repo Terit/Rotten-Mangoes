@@ -7,8 +7,4 @@ class User < ActiveRecord::Base
 
   enum role: %w(regular admin)
 
-  def full_name
-    "#{firstname} #{lastname}"
-  end
-
 end

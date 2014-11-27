@@ -25,7 +25,7 @@
         <ul class="right">
           <% if current_user %>
             <li class='has-dropdown'>
-              <a><%= current_user.full_name %></a>
+              <a><%= full_name(current_user) %></a>
               <ul class='dropdown'>
                 <li class='active'><%= link_to "Admin Page", admin_users_path %></li>
                 <li><%= link_to "Submit a movie!", new_movie_path %></li>
