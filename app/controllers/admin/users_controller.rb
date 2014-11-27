@@ -3,27 +3,27 @@ class Admin::UsersController < ApplicationController
   before_filter :admin_access
 
   def index
-
-  end
-
-  def show
     @users = User.all
   end
 
-  def new
-    @user = User.new
+  def show
+    @user = User.find(params[:id])
   end
 
-  def create
-    @user = User.new(user_params)
+  # def new
+  #   @user = User.new
+  # end
 
-    if @user.save
-      session[:user_id] = @user.id #auto login
-      redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @user = User.new(user_params)
+
+  #   if @user.save
+  #     session[:user_id] = @user.id #auto login
+  #     redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
+  #   else
+  #     render :new
+  #   end
+  # end
 
   protected
 

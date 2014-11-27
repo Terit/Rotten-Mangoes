@@ -1,26 +1,26 @@
 <div class='row'>
   <div class='small-3 column'>
-    <%= link_to image_tag(@movie.poster.thumb.url()), movie_path(@movie), class: 'th' %>
+    <%= link_to image_tag(@user.poster.thumb.url()), movie_path(@user), class: 'th' %>
   </div>
   <div class='small-9 column'>
-    <h2><%= @movie.title %></h2>
-    <p><%= formatted_date(@movie.release_date) %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)</p>
-    <h5>Director: <%= @movie.director %></h5>
-    <h5>Runtime: <%= @movie.runtime_in_minutes %> minutes</h5>
-    <p><%= @movie.description %></p>
+    <h2><%= @user.title %></h2>
+    <p><%= formatted_date(@user.release_date) %> (<%= link_to "edit", edit_movie_path(@user) %>, <%= link_to "delete", movie_path(@user), method: :delete, confirm: "You sure?" %>)</p>
+    <h5>Director: <%= @user.director %></h5>
+    <h5>Runtime: <%= @user.runtime_in_minutes %> minutes</h5>
+    <p><%= @user.description %></p>
   </div>
 </div>
 
 <div class='row'>
   <div class='small-12 column'>
-    <h3>Reviews of <em><%= @movie.title %></em></h3>
+    <h3>Reviews of <em><%= @user.title %></em></h3>
     <% if current_user %>
-      <% @movie.reviews.each do |review| %>
+      <% @user.reviews.each do |review| %>
         <p><%= review.text %></p>
         <p><%= review.rating_out_of_ten %>/10</p>
         <small>- <%= review.user.full_name %></small><br/>
       <% end %>
-      <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
+      <p><%= link_to "Write a review!", new_movie_review_path(@user) %></p>
     <% else %>
       <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own.</p> 
     <% end %>

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def admin_access
     if !(current_user && current_user.role == 'admin')
       flash[:alert] = "You must be logged in as an admin."
-      redirect_to movies_path, notice: "You must be logged in as an admin to view that page."
+      redirect_to movies_path
     end
   end
 
