@@ -23,13 +23,19 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-          <li class="has-dropdown">
-            <a href="#">Menu</a>
-            <ul class="dropdown">
-              <li><%= link_to "Movies", movies_path %></li>
-              <li class="active"><a href="#">Active link in dropdown</a></li>
-            </ul>
-          </li>
+          <% if current_user %>
+            <li class='has-dropdown'>
+              <a><%= current_user.full_name %></a>
+              <ul class='dropdown'>
+                <li class='active'><%= link_to "Admin Page", admin_users_path %></li>
+                <li><%= link_to "Submit a movie!", new_movie_path %></li>
+                <li><%= link_to "Log Out", session_path("current"), method: :delete %></li>
+              </ul>
+            </li>
+            <% else %>
+            <li class='active'><%= link_to "Sign Up", new_user_path %></li>
+            <li><%= link_to "Log In", new_session_path %></li>
+          <% end %>
         </ul>
 
         <!-- Left Nav Section -->
@@ -49,14 +55,17 @@
     </nav>  
     <div class='container'>
       <div class='row'>
-        <div class='large-2 columns'>
-        </div>
-        <div class='large-8 columns'>
-        <%= yield %>
-        </div>
-        <div class='large-2 columns'></div>
+        <br />
+        <br />
       </div>
+      <% flash.each do |name, msg| %>
+      <div class='row'>
+        <%= content_tag :div, msg, class: "small-6 small-offset-3 column alert-box #{name} radius" %>
+      </div>
+      <% end %>
+      <%= yield %>
+
+    <%= javascript_include_tag "application" %>    
     </div>
-        <%= javascript_include_tag "application" %>    
   </body>
 </html>

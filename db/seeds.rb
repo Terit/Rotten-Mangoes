@@ -5,3 +5,33 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create(
+  email: 'artheriault@gmail.com',
+  firstname: 'Andy',
+  lastname: 'Theriault',
+  password: 'password',
+  password_confirmation: 'password',
+  role: 1
+)
+
+10.times do 
+  raise "Could not create user" unless User.create(
+    email: Faker::Internet.email,
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name,
+    password: 'password',
+    password_confirmation: 'password' 
+    )
+
+
+  raise "Could not create movie" unless Movie.create(
+    title: Faker::App.name,
+    director: Faker::Name.name,
+    runtime_in_minutes: Faker::Number.number(2),
+    description: Faker::Lorem.paragraph,
+    poster: Faker::Avatar.image,
+    release_date: Faker::Date.forward(60)
+    )
+
+end

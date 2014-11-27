@@ -7,8 +7,15 @@ class ApplicationController < ActionController::Base
 
   def restrict_access
     if !current_user
-      flash[:alert] = "You must log in."
+      flash[:info] = "You must log in."
       redirect_to new_session_path
+    end
+  end
+
+  def admin_access
+    if !(current_user && current_user.role == 'admin')
+      flash[:alert] = "You must be logged in as an admin."
+      redirect_to movies_path
     end
   end
 
