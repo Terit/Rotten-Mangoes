@@ -1,0 +1,21 @@
+<div class='row'>
+<%= form_tag("/", method: "get") do %>
+  <div class='small-3 columns'>
+  <%= label_tag(:title, "Movie Title:") %>
+  <%= text_field_tag(:title) %>
+  </div>
+  <div class='small-3 columns'>
+  <%= label_tag(:director, "Director:") %>
+  <%= text_field_tag(:director) %>
+  </div>
+  <div class='small-3 columns'>
+  <%= label_tag(:duration, "Movie Duration:") %>
+  <%= select_tag(:duration, options_for_select([['Select movie duration', 0],['Under 90 minutes', 1],['Between 90 and 120', 2], ["Over 120 minutes", 3] ])) %>
+  </div>
+  <div class='small-3 columns'>
+
+  <%= submit_tag("Search", class: 'button postfix', style: 'margin-top: 21px') %>
+  </div>
+<% end %>
+
+</div>
