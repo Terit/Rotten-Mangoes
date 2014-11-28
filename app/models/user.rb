@@ -7,4 +7,11 @@ class User < ActiveRecord::Base
 
   enum role: %w(regular admin)
 
+  before_destroy :send_email_notification
+
+  private
+
+  def send_email_notification
+    UserMailer.delete_email(self).deliver
+  end
 end
