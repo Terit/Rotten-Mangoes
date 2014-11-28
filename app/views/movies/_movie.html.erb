@@ -1,15 +1,15 @@
-  <div class='row'>
-    <div class='small-3 columns'>
-      <%= link_to image_tag(movie.poster.thumb.url()), movie_path(movie), class: 'th' %>
-     </div>
-     <div class='small-7 columns'> 
-        <h4><%= link_to movie.title, movie_path(movie) %></h4>
-        <h6>Release date: <%= formatted_date(movie.release_date) %></h6>
-        <h6>Directed by: <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h6>
-        <p><%= movie.description %></p>
-     </div> 
-     <div class='small-1 small-offset-1 columns'>
-        <h6><%= movie.review_average %></h6>
-      </div>
-  </div>
-  <br>
+<div class='row'>
+  <div class='small-3 columns'>
+    <%= link_to image_tag(movie.poster.thumb.url()), movie_path(movie), class: 'th' %>
+   </div>
+   <div class='small-7 columns'> 
+      <h4><%= link_to movie.title, movie_path(movie) %></h4>
+      <h6>Release date: <%= formatted_date(movie.release_date) %></h6>
+      <h6>Directed by: <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h6>
+      <p><%= movie.description %></p>
+   </div> 
+   <div class='small-1 small-offset-1 columns'>
+      <h6><%= movie.review_average %></h6>
+    </div>
+</div>
+<br>

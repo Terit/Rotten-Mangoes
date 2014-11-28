@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :create, :edit, :destroy, :update]
   end
 
+  get '/admin/change_users/:id', to: 'admin/users#change_user'
+
   root to: 'movies#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -2,6 +2,9 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.search_results(params)
+    if params[:title].present?
+      flash[:notice] = "Search results for #{params[:title]}"
+    end
   end
 
   def show
