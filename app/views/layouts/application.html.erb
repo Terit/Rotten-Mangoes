@@ -41,13 +41,18 @@
 
         <!-- Left Nav Section -->
         <ul class="left">
+          <li>
+            <%= image_tag 'mango.ico', size: '45' %>
+          </li>
           <li class="has-form">
             <div class="row collapse">
               <div class="large-8 small-9 columns">
-                <input type="text" placeholder="Find a Movie">
+                <%= form_tag("/", method: "get") do %>
+                  <%= text_field_tag(:title, nil, placeholder: "Find a Movie") %>
               </div>
               <div class="large-4 small-3 columns">
-                <a href="#" class="alert button expand">Search</a>
+                  <%= submit_tag("Search", class: "alert button expand") %>
+                <% end %>
               </div>
             </div>
           </li>

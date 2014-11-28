@@ -15,7 +15,7 @@ User.create(
   role: 1
 )
 
-10.times do 
+30.times do 
   raise "Could not create user" unless User.create(
     email: Faker::Internet.email,
     firstname: Faker::Name.first_name,
@@ -28,9 +28,9 @@ User.create(
   raise "Could not create movie" unless Movie.create(
     title: Faker::App.name,
     director: Faker::Name.name,
-    runtime_in_minutes: Faker::Number.number(2),
+    runtime_in_minutes: rand(82..213),
     description: Faker::Lorem.paragraph,
-    poster: Faker::Avatar.image,
+    poster_image_url: Faker::Avatar.image,
     release_date: Faker::Date.forward(60)
     )
 
