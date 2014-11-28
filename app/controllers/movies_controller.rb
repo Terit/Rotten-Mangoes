@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.search_results(params)
+    @movies = Movie.search_results(params).page(params[:page]).per(10)
     if params[:title].present?
       flash[:notice] = "Search results for #{params[:title]}"
     end
