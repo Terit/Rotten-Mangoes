@@ -1,0 +1,18 @@
+<div class='row'>
+  <div class='small-3 columns'>
+
+<%= form_tag("/", method: "get") do %>
+  <%= label_tag(:title, "Movie Title:") %>
+  <%= text_field_tag(:title) %>
+
+  <%= label_tag(:director, "Director:") %>
+  <%= text_field_tag(:director) %>
+
+  <%= label_tag(:duration, "Movie Duration:") %>
+  <%= select_tag(:duration, options_for_select([['Under 90 minutes', 1],['Between 90 and 120', 2], ["Over 120 minutes", 3] ])) %>
+
+
+  <%= submit_tag("Search") %>
+<% end %>
+  </div>
+</div>
