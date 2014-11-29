@@ -1,5 +1,7 @@
-<%= render 'search' %>
- 
+<% if params[:search].present? %>
+  <%= render 'search' %>
+<% end %>
+
 <%= render @movies %>
 
 <div class='row'>
