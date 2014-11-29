@@ -7,15 +7,13 @@ class Movie < ActiveRecord::Base
   validate :release_date_is_in_the_future
 
   scope :search_results, -> (params) do 
-    if params[:title].present?
-      find_by_title(params[:title]).movie_duration(params[:duration])
-    elsif params[:director].present?
-      find_by_director(params[:director]).movie_duration(params[:duration])
+    if params[:search].present?
+      find_by_title_or_director(params[:search]).movie_duration(params[:duration])
     else
       movie_duration(params[:duration])
     end
   end
-
+  scope :find_by_title_or_director, -> (search_word) { where("title LIKE ? OR director LIKE ?", search_word, "%#{search_word}%")}
   scope :find_by_title, -> (title) { where("title LIKE ?", title) }
   scope :find_by_director, -> (name) { where("director LIKE ?", "%#{name}%") }
   scope :movie_duration, -> (duration) do

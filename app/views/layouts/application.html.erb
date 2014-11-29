@@ -70,9 +70,9 @@
         <br />
       </div>
       <% flash.each do |name, msg| %>
-      <div class='row'>
-        <%= content_tag :div, msg, class: "small-12 columns alert-box #{name} radius" %>
-      </div>
+          <div class='row'>
+            <%= content_tag :div, msg, class: "small-12 columns alert-box #{name} radius" %>
+          </div>
       <% end %>
       <%= yield %>
 
