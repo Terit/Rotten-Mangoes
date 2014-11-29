@@ -4,7 +4,7 @@ class Movie < ActiveRecord::Base
   
   validates :title, :director, :description, :release_date, presence: true
   validates :runtime_in_minutes, numericality: { only_integer: true }
-  validate :release_date_is_in_the_future
+
 
   scope :search_results, -> (params) do 
     if params[:search].present?
