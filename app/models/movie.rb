@@ -13,7 +13,7 @@ class Movie < ActiveRecord::Base
       movie_duration(params[:duration])
     end
   end
-  scope :find_by_title_or_director, -> (search_word) { where("title LIKE ? OR director LIKE ?", search_word, "%#{search_word}%")}
+  scope :find_by_title_or_director, -> (search_word) { where("title LIKE ? OR director LIKE ?", search_word, "%#{search_word}%") }
   scope :find_by_title, -> (title) { where("title LIKE ?", title) }
   scope :find_by_director, -> (name) { where("director LIKE ?", "%#{name}%") }
   scope :movie_duration, -> (duration) do
