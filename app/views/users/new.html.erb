@@ -1,34 +1,61 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div>
-      <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
-      <ul>
+<div class='row'>
+  <div class="small-6 small-offset-3 columns">
+    <h1>Sign Up</h1>
+  </div>
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div>
+        <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
+        <ul>
         <% @user.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
-      </ul>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="small-6 small-offset-3 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <%= f.label "email", class: "prefix" %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field "email" %>
+        </div>
+      </div>
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <%= f.label "firstname", "First Name", class: "prefix" %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field "firstname" %>
+        </div>
+      </div>
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <%= f.label "lastname", "Last Name", class: "prefix" %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field "lastname" %>
+        </div>
+      </div>
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <%= f.label "password", class: "prefix" %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.password_field "password" %>
+        </div>
+      </div>
+      <div class="row collapse prefix-radius">
+        <div class="small-4 columns">
+          <%= f.label "password_confirmation", "Confirm Password", class: "prefix" %>
+        </div>
+        <div class="small-8 columns">
+          <%= f.password_field "password_confirmation" %>
+        </div>
+      </div>
+      <%= f.submit "Submit", class: "button postfix" %>
     </div>
   <% end %>
-  <div>
-    <%= f.label "email" %><br>
-    <%= f.text_field "email" %>
-  </div>
-  <div>
-    <%= f.label "firstname", "First Name" %><br>
-    <%= f.text_field "firstname" %>
-  </div>
-  <div>
-    <%= f.label "lastname", "Last Name" %><br>
-    <%= f.text_field "lastname" %>
-  </div>
-  <div>
-    <%= f.label "password" %><br>
-    <%= f.password_field "password" %>
-  </div>
-  <div>
-    <%= f.label "password_confirmation" %><br>
-    <%= f.password_field "password_confirmation" %>
-  </div>
-  <div><%= f.submit "Submit" %></div>
-<% end %>
+</div>
