@@ -1,12 +1,25 @@
-<h1>Log In</h1>
-<%= form_tag sessions_path do %>
-  <div>
-    <%= label_tag "email" %><br/>
-    <%= text_field_tag "email" %>
+<div class='row'>
+  <div class="small-6 small-offset-3 columns">
+    <h1>Log In</h1>
   </div>
-  <div>
-    <%= label_tag :password %><br/>
-    <%= password_field_tag :password %>
-  </div>
-  <div><%= submit_tag "Log In" %></div>
-<% end %>
+  <%= form_tag session_path do %>
+    <div class="small-6 small-offset-3 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <%= label_tag "email", nil, class: "prefix" %>
+        </div>
+        <div class="small-9 columns">
+          <%= text_field_tag "email" %>
+        </div>
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <%= label_tag :password, nil, class: "prefix" %>
+        </div>
+        <div class="small-9 columns">
+          <%= password_field_tag :password %>
+        </div>
+      </div>
+    </div>
+    <%= submit_tag "Log In", class: "button postfix" %>
+  <% end %>
+</div>

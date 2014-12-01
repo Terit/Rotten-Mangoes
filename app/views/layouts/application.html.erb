@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= favicon_link_tag 'mango.ico' %>
 
     <title><%= content_for?(:title) ? yield(:title) : "Rotten Mangoes" %></title>
 
@@ -27,8 +28,13 @@
             <li class='has-dropdown'>
               <a><%= full_name(current_user) %></a>
               <ul class='dropdown'>
+                <% if session[:admin_id] %>
                 <li class='active'><%= link_to "Admin Page", admin_users_path %></li>
+                <% end %>
                 <li><%= link_to "Submit a movie!", new_movie_path %></li>
+                <% if session[:admin_id].to_i != session[:user_id].to_i %>
+                <li class='active'><%= link_to "Back to me", "admin/change_users/#{session[:admin_id]}" %></li>
+                <% end %>
                 <li><%= link_to "Log Out", session_path("current"), method: :delete %></li>
               </ul>
             </li>
@@ -40,14 +46,19 @@
 
         <!-- Left Nav Section -->
         <ul class="left">
+          <li>
+            <%= image_tag 'mango.ico', size: '45' %>
+          </li>
           <li class="has-form">
             <div class="row collapse">
-              <div class="large-8 small-9 columns">
-                <input type="text" placeholder="Find a Movie">
-              </div>
-              <div class="large-4 small-3 columns">
-                <a href="#" class="alert button expand">Search</a>
-              </div>
+                <%= form_tag("/", method: "get") do %>
+                  <div class="large-8 small-8 columns" style="padding-right: 0px">
+                  <%= text_field_tag(:search, nil, placeholder: "Find a Movie") %>
+                  </div>
+                  <div class="large-4 small-4 columns" style="padding-left: 0px">
+                    <%= submit_tag("Search", class: "alert button expand") %>
+                  </div>
+                <% end %>
             </div>
           </li>
         </ul>
@@ -59,9 +70,9 @@
         <br />
       </div>
       <% flash.each do |name, msg| %>
-      <div class='row'>
-        <%= content_tag :div, msg, class: "small-6 small-offset-3 column alert-box #{name} radius" %>
-      </div>
+          <div class='row'>
+            <%= content_tag :div, msg, class: "small-12 columns alert-box #{name} radius" %>
+          </div>
       <% end %>
       <%= yield %>
 

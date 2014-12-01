@@ -30,17 +30,26 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    if @user.update_attributes(user_params)
+    if params[:user].present?
+      if @user.update_attributes(user_params)
+        redirect_to admin_users_path
+      else
+        render :'users/edit'
+      end
+    elsif params[:intent] == 'toggle_admin'
+      @user.toggle_admin
       redirect_to admin_users_path
-    else
-      render :'users/edit'
     end
+  end
+
+  def change_user
+    session[:user_id] = params[:id]
+    redirect_to movies_path
   end
 
   protected
 
-  def user_params
+  def user_params 
     params.require(:user).permit(
       :email,
       :firstname,

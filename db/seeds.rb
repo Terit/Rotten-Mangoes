@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Tmdb::Api.key('5cc38f28d0fb23ed45663d4dd805e56c')
+
 User.create(
   email: 'artheriault@gmail.com',
   firstname: 'Andy',
@@ -15,7 +17,7 @@ User.create(
   role: 1
 )
 
-10.times do 
+30.times do 
   raise "Could not create user" unless User.create(
     email: Faker::Internet.email,
     firstname: Faker::Name.first_name,
@@ -24,14 +26,20 @@ User.create(
     password_confirmation: 'password' 
     )
 
+  credits = nil
+  while credits.nil? do
+    num = rand(320..1231)
+    movie = Tmdb::Movie.detail(num)
+    credits = Tmdb::Movie.credits(num)
+    credits = nil if credits[:crew].nil? || credits[:crew].first.nil?
+  end
 
   raise "Could not create movie" unless Movie.create(
-    title: Faker::App.name,
-    director: Faker::Name.name,
-    runtime_in_minutes: Faker::Number.number(2),
-    description: Faker::Lorem.paragraph,
-    poster: Faker::Avatar.image,
-    release_date: Faker::Date.forward(60)
+    title: movie.title,
+    director: credits[:crew].first.name,
+    runtime_in_minutes: movie.runtime,
+    description: movie.overview,
+    release_date: Moviee.release_date,
+    remote_poster_url: "http://image.tmdb.org/t/p/w154#{movie.poster_path}"
     )
-
 end

@@ -38,9 +38,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'pry'
 gem 'foundation-rails'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'kaminari'
+gem 'themoviedb'

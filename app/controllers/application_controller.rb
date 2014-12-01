@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_access
-    if !(current_user && current_user.role == 'admin')
+    if !(session[:admin_id] && current_user)
       flash[:alert] = "You must be logged in as an admin."
       redirect_to movies_path
     end

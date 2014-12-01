@@ -7,4 +7,22 @@ class User < ActiveRecord::Base
 
   enum role: %w(regular admin)
 
+  before_destroy :send_email_notification
+
+  def toggle_admin
+    if role == 'admin'
+      update role: 0
+    else
+      update role: 1
+    end
+    role
+  end
+
+  private
+
+  def send_email_notification
+    UserMailer.delete_email(self).deliver
+  end
+
+
 end
