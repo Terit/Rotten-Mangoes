@@ -1,6 +1,7 @@
 <div class='row'>
-<h2>Edit User</h2>
-
+  <div class="small-6 small-offset-3 columns">
+    <h2>Edit User</h2>
+  </div>
 <%= form_for @user, url: admin_user_path(@user) do |f| %>
   <% if @user.errors.any? %>
     <div>
@@ -12,25 +13,49 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= f.label "email" %><br>
-    <%= f.text_field "email" %>
+
+  <div class="small-6 small-offset-3 columns">
+  <div class="row collapse prefix-radius">
+    <div class="small-3 columns">
+      <%= f.label "email", class: "prefix" %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field "email" %>
+    </div>
   </div>
-  <div>
-    <%= f.label "firstname", "First Name" %><br>
-    <%= f.text_field "firstname" %>
+  <div class="row collapse prefix-radius">
+    <div class="small-3 columns">
+      <%= f.label "firstname", "First Name", class: "prefix" %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field "firstname" %>
+    </div>
   </div>
-  <div>
-    <%= f.label "lastname", "Last Name" %><br>
-    <%= f.text_field "lastname" %>
+  <div class="row collapse prefix-radius">
+    <div class="small-3 columns">
+      <%= f.label "lastname", "Last Name", class: "prefix" %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field "lastname" %>
+    </div>
   </div>
-  <div>
-    <%= f.label "password" %><br>
-    <%= f.password_field "password" %>
+  <div class="row collapse prefix-radius">
+    <div class="small-3 columns">
+      <%= f.label "password", class: "prefix" %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.password_field "password" %>
+    </div>
   </div>
-  <div>
-    <%= f.label "password_confirmation" %><br>
-    <%= f.password_field "password_confirmation" %>
+  <div class="row collapse prefix-radius">
+    <div class="small-4 columns">
+      <%= f.label "password_confirmation", "Confirm Password", class: "prefix" %>
+    </div>
+    <div class="small-8 columns">
+      <%= f.password_field "password_confirmation" %>
+    </div>
   </div>
-  <div><%= f.submit "Submit" %></div>
+  <%= f.submit "Submit", class: "button postfix" %>
+</div>
+
 <% end %>
