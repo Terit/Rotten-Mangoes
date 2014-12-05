@@ -39,7 +39,7 @@ User.create(
     director: credits[:crew].first.name,
     runtime_in_minutes: movie.runtime,
     description: movie.overview,
-    release_date: Moviee.release_date,
+    release_date: movie.release_date,
     remote_poster_url: "http://image.tmdb.org/t/p/w154#{movie.poster_path}"
     )
 end
