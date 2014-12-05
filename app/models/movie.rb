@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
   has_many :reviews
-  mount_uploader :poster, PosterUploader
+  # mount_uploader :poster, PosterUploader
   
   validates :title, :director, :description, :release_date, presence: true
   validates :runtime_in_minutes, numericality: { only_integer: true }

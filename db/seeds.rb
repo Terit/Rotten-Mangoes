@@ -40,6 +40,6 @@ User.create(
     runtime_in_minutes: movie.runtime,
     description: movie.overview,
     release_date: movie.release_date,
-    remote_poster_url: "http://image.tmdb.org/t/p/w154#{movie.poster_path}"
+    poster_image_url: "http://image.tmdb.org/t/p/w154#{movie.poster_path}"
     )
 end

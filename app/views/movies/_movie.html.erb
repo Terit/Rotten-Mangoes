@@ -1,6 +1,6 @@
 <div class='row'>
   <div class='small-3 columns'>
-    <%= link_to image_tag(movie.poster.thumb.url()), movie_path(movie), class: 'th' %>
+    <%= link_to image_tag(movie.poster_image_url), movie_path(movie), class: 'th' %>
    </div>
    <div class='small-7 columns'> 
       <h4><%= link_to movie.title, movie_path(movie) %></h4>
