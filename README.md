@@ -1,4 +1,4 @@
-== ROTTEN MANGOES
+##ROTTEN MANGOES
 
 My first Ruby on Rails app, a Rotten Tomatoesesque site where users can add and review movies.
 
